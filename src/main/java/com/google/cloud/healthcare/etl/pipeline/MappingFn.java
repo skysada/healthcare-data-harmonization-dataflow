@@ -119,7 +119,7 @@ public class MappingFn<M extends Mappable> extends ErrorEnabledDoFn<M, MappingOu
     try {
       return new String(provider.getMappingConfig(true /* force */), StandardCharsets.UTF_8);
     } catch (IOException | NullPointerException e) {
-      throw new RuntimeException("Unable to load mapping configurations.", e);
+      throw new RuntimeException(String.format("Unable to load mapping configurations for path %s", mappingPath), e);
     }
   }
 
