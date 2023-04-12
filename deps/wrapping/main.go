@@ -112,7 +112,7 @@ func initialize(dhc *dhpb.DataHarmonizationConfig) error {
 	transformer, err = whistler.NewTransformer(context.Background(), dhc, tconfig)
 	if err != nil {
 	    fmt.Sprintf("MAPPING_ENGINE_HOME: %v", os.Getenv("MAPPING_ENGINE_HOME"))
-		return fmt.Errorf("unable to initialize data harmonization config: %v", err)
+		return fmt.Errorf("unable to initialize data harmonization config AND MAPPING_ENGINE_HOME= %v", os.Getenv("MAPPING_ENGINE_HOME"))
 	}
 	return nil
 }
