@@ -32,7 +32,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"unsafe"
-
+    "os"
 	"github.com/GoogleCloudPlatform/healthcare-data-harmonization/mapping_language/transpiler" /* copybara-comment: transpiler */
 	"google.golang.org/protobuf/encoding/prototext" /* copybara-comment: prototext */
 
@@ -70,6 +70,9 @@ func Java_com_google_cloud_healthcare_etl_util_library_TransformWrapper_transfor
 
 //export Java_com_google_cloud_healthcare_etl_util_library_TransformWrapper_initializeWhistler
 func Java_com_google_cloud_healthcare_etl_util_library_TransformWrapper_initializeWhistler(env *C.JNIEnv, cls C.jclass, cConfig C.jstring) {
+    fmt.Sprintf("MAPPING_ENGINE_HOME: %v", os.Getenv("MAPPING_ENGINE_HOME"))
+    os.Setenv("MAPPING_ENGINE_HOME", "gs://ascp-hl7-to-fhir-df/mapping/")
+    fmt.Sprintf("MAPPING_ENGINE_HOME: %v", os.Getenv("MAPPING_ENGINE_HOME"))
 	config := jStringGoString(env, cConfig)
 	dhc := &dhpb.DataHarmonizationConfig{}
 	if err := prototext.Unmarshal([]byte(config), dhc); err != nil {
@@ -108,6 +111,7 @@ func initialize(dhc *dhpb.DataHarmonizationConfig) error {
 	var err error
 	transformer, err = whistler.NewTransformer(context.Background(), dhc, tconfig)
 	if err != nil {
+	    fmt.Sprintf("MAPPING_ENGINE_HOME: %v", os.Getenv("MAPPING_ENGINE_HOME"))
 		return fmt.Errorf("unable to initialize data harmonization config: %v", err)
 	}
 	return nil
