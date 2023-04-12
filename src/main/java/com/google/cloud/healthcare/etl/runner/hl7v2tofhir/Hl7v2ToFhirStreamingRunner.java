@@ -75,6 +75,13 @@ public class Hl7v2ToFhirStreamingRunner {
 
     void setPubSubSubscription(String subSubscription);
 
+    @Description("MAPPING_ENGINE_HOME requirement for DHE")
+    @Required
+    String getMAPPING_ENGINE_HOME();
+
+    void setMAPPING_ENGINE_HOME(String MAPPING_ENGINE_HOME);
+
+
     @Description(
         "The path to the mapping configurations. The path will be treated as a GCS path if the"
             + " path starts with the GCS scheme (\"gs\"), otherwise a local file. Please see: "
