@@ -77,7 +77,7 @@ public class Hl7v2ToFhirStreamingRunner {
 
     @Description("MAPPING_ENGINE_HOME requirement for DHE")
     @Required
-    String getMAPPING_ENGINE_HOME();
+    ValueProvider<String> getMAPPING_ENGINE_HOME();
 
     void setMAPPING_ENGINE_HOME(String MAPPING_ENGINE_HOME);
 
