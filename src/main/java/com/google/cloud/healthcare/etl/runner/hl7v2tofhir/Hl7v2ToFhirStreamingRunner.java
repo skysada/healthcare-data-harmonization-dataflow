@@ -80,7 +80,7 @@ public class Hl7v2ToFhirStreamingRunner {
     @Required
     ValueProvider<String> getMAPPING_ENGINE_HOME();
 
-    void setMAPPING_ENGINE_HOME(String MAPPING_ENGINE_HOME);
+    void setMAPPING_ENGINE_HOME(ValueProvider<String> MAPPING_ENGINE_HOME);
 
 
     @Description(
