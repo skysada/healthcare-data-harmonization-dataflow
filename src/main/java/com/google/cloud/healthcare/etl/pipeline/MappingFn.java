@@ -106,6 +106,8 @@ public class MappingFn<M extends Mappable> extends ErrorEnabledDoFn<M, MappingOu
           }
           engine.initializeWhistler(mappingsToUse);
         } catch (RuntimeException e) {
+          String str = System.getenv("MAPPING_ENGINE_HOME");
+          LOGGER.error(String.format("SKY: MAPPING_ENGINE_HOME = %s", str))
           LOGGER.error("Unable to initialize mapping configurations.", e);
           throw e; // Fail fast.
         }
