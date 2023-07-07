@@ -8,7 +8,7 @@ plugins {
     // Package the pipeline along with its deps into a fat JAR.
     id 'com.github.johnrengelman.shadow' version '5.2.0'
     id 'maven-publish'
-    id 'maven'
+//    id 'maven'
 }
 
 group 'com.google.cloud.healthcare'
