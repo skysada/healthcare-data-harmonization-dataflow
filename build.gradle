@@ -112,5 +112,5 @@ clean {
 task buildDeps(type: Exec) {
     inputs.dir('deps')
     outputs.file('lib/libwhistler.so')
-    commandLine './build_deps.sh', '--work_dir', file('build/tmp/build_deps').absolutePath, '--output_dir', file('lib').absolutePath
+    commandLine 'build_deps.sh', '--work_dir', file('build/tmp/build_deps').absolutePath, '--output_dir', file('lib').absolutePath
 }
